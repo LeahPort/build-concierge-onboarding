@@ -1,315 +1,275 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Concierge Onboarding</title>
+  <!-- Load DM Sans from Google Fonts (Primary Brand Font) -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Tailwind Configuration for Brand Colors and Font */
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bc-primary-blue': '#2E52FE',    /* Primary Blue: #2E52FE */
+            'bc-dark-blue': '#052839',       /* Dark Blue: #052839 */
+            'bc-accent-green': '#28a745',    /* A vivid green often seen on the website for success/automation */
+          },
+          fontFamily: {
+            // Applying DM Sans as the primary sans font family
+            sans: ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </style>
+  <style>
+    /* Apply the DM Sans font family to the body */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #f7f9fb; /* Light, soft background */
+    }
+
+    /* Custom CSS for the Timeline Connector Line */
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      /* Match the wider border and offset for centering */
+      left: 1rem;
+      width: 8px; /* Making the line bolder */
+      height: 100%;
+      background-color: #e0e7ff; /* Light blue line */
+      z-index: 0;
+    }
+
+    .timeline-item:last-child .timeline-line {
+      height: 50%; /* Shorten the line for the last item */
+    }
+
+    /* Styling for the prominent timeline dots */
+    .timeline-dot {
+      position: absolute;
+      /* Adjust position to compensate for wider line/dot */
+      left: 0.8rem;
+      width: 1.5rem; /* Increased size */
+      height: 1.5rem; /* Increased size */
+      background-color: #2E52FE; /* Primary Blue */
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      transform: translateX(-50%);
+    }
   </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Build Concierge Onboarding&lt;/title&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Load DM Sans from Google Fonts (Primary Brand Font) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Load Tailwind CSS --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Custom Tailwind Configuration for Brand Colors and Font */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>tailwind.config = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>theme: {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>extend: {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>colors: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>'bc-primary-blue': '#2E52FE',<span class="Apple-converted-space">    </span>/* Primary Blue: #2E52FE */</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>'bc-dark-blue': '#052839',<span class="Apple-converted-space">      </span>/* Dark Blue: #052839 */</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>'bc-accent-green': '#28a745', <span class="Apple-converted-space">  </span>/* A vivid green often seen on the website for success/automation */</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>fontFamily: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>// Applying DM Sans as the primary sans font family</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>sans: ['DM Sans', 'sans-serif'],<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Apply the DM Sans font family to the body */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'DM Sans', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f7f9fb; /* Light, soft background */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Custom CSS for the Timeline Connector Line */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.timeline-line {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>/* Match the wider border and offset for centering */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 1rem;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 8px; /* Making the line bolder */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e0e7ff; /* Light blue line */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.timeline-item:last-child .timeline-line {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 50%; /* Shorten the line for the last item */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Styling for the prominent timeline dots */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.timeline-dot {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>/* Adjust position to compensate for wider line/dot */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0.8rem;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 1.5rem; /* Increased size */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 1.5rem; /* Increased size */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #2E52FE; /* Primary Blue */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 9999px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 10;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="p-4 sm:p-8"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-6xl mx-auto space-y-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Header Section - Replaced text wordmark with actual SVG logo, kept bold styling --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="text-center py-10 bg-white rounded-xl shadow-2xl border-t-8 border-bc-primary-blue relative overflow-hidden"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="inline-flex items-baseline justify-center mb-4 relative z-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Build Concierge SVG Logo --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="https://www.buildconcierge.com/build-concierge.svg" alt="Build Concierge Logo" class="h-16 md:h-20 w-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-4xl font-extrabold text-bc-dark-blue mb-2 relative z-10"&gt;Welcome to Build Concierge&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-xl text-gray-600 font-medium relative z-10"&gt;Your structured onboarding journey starts here.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Goal and Program Overview --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-l-8 border-bc-primary-blue"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-lg text-gray-700 leading-relaxed mb-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Over the next four weeks, we will set you up for long term success with a clear plan, shared responsibilities and measurable progress.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Goal Headline uses Primary Blue --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-bold text-bc-primary-blue mb-3"&gt;Our Goal&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-xl text-bc-dark-blue font-semibold"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>To help your team become confident, capable and self-sufficient users of the Build Concierge platform so you start seeing real value fast.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- What Your Onboarding Covers (Grid of White Boxes) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-4xl font-extrabold text-bc-dark-blue mb-6"&gt;Your Four Week Onboarding Programme&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-lg text-gray-700 mb-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Your onboarding includes everything required to get you live and delivering instant results.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- All boxes use Primary Blue border and Dark Blue text for headings - Border width increased to 8 --&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Box 1: Platform Setup --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Platform Setup&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-2 text-sm text-gray-600 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Account creation&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Login details issued&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Site configuration and access approved&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Box 2: Workflow Configuration --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Workflow Configuration&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-2 text-sm text-gray-600 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Guided configuration of two to three workflows&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;One-to-one training sessions&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;All workflows tested with you before going live&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Box 3: Integrations --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Integrations&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-2 text-sm text-gray-600 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;BigChange setup or API configuration&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Channel setup across WhatsApp, phone and email&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Concierge Receptionist setup where applicable&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Box 4: Training and Resources --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Training &amp; Resources&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-2 text-sm text-gray-600 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Live training sessions with our team&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Printable quick start guides&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Full access to the knowledge base&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Training recordings for your team&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Timeline Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-4xl font-extrabold text-bc-dark-blue mb-8 text-center"&gt;Onboarding Process: Step-by-Step&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="relative max-w-4xl mx-auto pl-10 md:pl-16"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Timeline Connector Line (Custom CSS) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="timeline-line"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Timeline Item 1: Step 1 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="timeline-item relative pb-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Custom larger dot --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="timeline-dot -left-2 md:-left-4"&gt;1&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-primary-blue"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Step 1: Setup &amp; Workflow 1 Kickoff&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="grid sm:grid-cols-2 gap-4 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-bc-primary-blue mb-1"&gt;Customer&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="list-disc pl-4 text-gray-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Sales to onboarding handover&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Provide details for two workflows&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-bc-dark-blue mb-1"&gt;Build Concierge&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="list-disc pl-4 text-gray-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Introduce Support team&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Support process mapping for workflows&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Training session on building workflow one&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Daily monitoring&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Timeline Item 2: Step 2 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="timeline-item relative pb-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Custom larger dot --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="timeline-dot -left-2 md:-left-4"&gt;2&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-primary-blue"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Step 2: Workflow 1 Sign-Off &amp; Workflow 2 Kickoff&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="grid sm:grid-cols-2 gap-4 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-bc-primary-blue mb-1"&gt;Customer&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="list-disc pl-4 text-gray-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Test workflow one&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Sign off workflow one&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-bc-dark-blue mb-1"&gt;Build Concierge&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="list-disc pl-4 text-gray-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Training session on workflow two&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Daily monitoring&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Timeline Item 3: Step 3 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="timeline-item relative pb-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Custom larger dot --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="timeline-dot -left-2 md:-left-4"&gt;3&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-primary-blue"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Step 3: Go-Live Preparations &amp; Sign-Off&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="grid sm:grid-cols-2 gap-4 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-bc-primary-blue mb-1"&gt;Customer&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="list-disc pl-4 text-gray-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Sign off workflow two&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Sign off UAT (User Acceptance Testing)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Agree plan for future feature rollouts&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-bc-dark-blue mb-1"&gt;Build Concierge&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="list-disc pl-4 text-gray-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;li&gt;Reconfirm Support options and future timeframes&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Timeline Item 4: Post Go Live Support - Now using the brand accent green --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="timeline-item relative pb-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Custom larger dot --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="timeline-dot bg-bc-accent-green -left-2 md:-left-4"&gt;✓&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-accent-green"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-bc-dark-blue mb-3"&gt;Post Go Live Support (30 Day Hypercare)&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="space-y-2 text-sm text-gray-700 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;A 30 day hypercare period with priority access&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Weekly check ins&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Handover to the Customer Success or Support team&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;A best practice call after 30 days&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li&gt;Access to our resource library and customer community&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Pre Onboarding Preparation (Responsibilities) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="grid lg:grid-cols-2 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="lg:col-span-2 text-4xl font-extrabold text-bc-dark-blue mb-4"&gt;Pre Onboarding Preparation&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Customer Responsibilities - Using a soft, neutral accent for non-primary actions --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-8 bg-white rounded-xl shadow-lg border-l-8 border-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-2xl font-bold text-bc-dark-blue mb-4"&gt;Customer Responsibilities&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="space-y-3 text-base text-gray-700 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Provide BigChange API details&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Appoint a Superuser&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Confirm user accounts and domains&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Sign off on site setup and access&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Confirm any stakeholder annual leave&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Build Concierge Responsibilities - Using Primary Blue --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-8 bg-white rounded-xl shadow-lg border-l-8 border-bc-primary-blue"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-2xl font-bold text-bc-dark-blue mb-4"&gt;Build Concierge Responsibilities&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="space-y-3 text-base text-gray-700 list-disc pl-5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Create your account&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Share login details&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Book weekly progress calls&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Agree communication channels&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Provide product overview&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Confirm Support team availability&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Key Contacts (Simple Footer) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;footer class="text-center py-6 border-t mt-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-md text-gray-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>Key Contacts: A dedicated team across Support, Product and Customer Success will work with you throughout onboarding.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="p-4 sm:p-8">
+  <div class="max-w-6xl mx-auto space-y-12">
+
+    <!-- Header Section - Replaced text wordmark with actual SVG logo, kept bold styling -->
+    <header class="text-center py-10 bg-white rounded-xl shadow-2xl border-t-8 border-bc-primary-blue relative overflow-hidden">
+      <div class="inline-flex items-baseline justify-center mb-4 relative z-10">
+        <!-- Build Concierge SVG Logo -->
+        <img src="https://www.buildconcierge.com/build-concierge.svg" alt="Build Concierge Logo" class="h-16 md:h-20 w-auto">
+      </div>
+      <h1 class="text-4xl font-extrabold text-bc-dark-blue mb-2 relative z-10">Welcome to Build Concierge</h1>
+      <p class="text-xl text-gray-600 font-medium relative z-10">Your structured onboarding journey starts here.</p>
+    </header>
+
+    <!-- Goal and Program Overview -->
+    <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-l-8 border-bc-primary-blue">
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Over the next four weeks, we will set you up for long term success with a clear plan, shared responsibilities and measurable progress.
+      </p>
+      <!-- Goal Headline uses Primary Blue -->
+      <h2 class="text-2xl font-bold text-bc-primary-blue mb-3">Our Goal</h2>
+      <p class="text-xl text-bc-dark-blue font-semibold">
+        To help your team become confident, capable and self-sufficient users of the Build Concierge platform so you start seeing real value fast.
+      </p>
+    </section>
+
+    <!-- What Your Onboarding Covers (Grid of White Boxes) -->
+    <section>
+      <h2 class="text-4xl font-extrabold text-bc-dark-blue mb-6">Your Four Week Onboarding Programme</h2>
+      <p class="text-lg text-gray-700 mb-8">
+        Your onboarding includes everything required to get you live and delivering instant results.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Box 1: Platform Setup -->
+        <div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl">
+          <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Platform Setup</h3>
+          <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+            <li>Account creation</li>
+            <li>Login details issued</li>
+            <li>Site configuration and access approved</li>
+          </ul>
+        </div>
+        <!-- Box 2: Workflow Configuration -->
+        <div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl">
+          <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Workflow Configuration</h3>
+          <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+            <li>Guided configuration of two to three workflows</li>
+            <li>One-to-one training sessions</li>
+            <li>All workflows tested with you before going live</li>
+          </ul>
+        </div>
+        <!-- Box 3: Integrations -->
+        <div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl">
+          <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Integrations</h3>
+          <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+            <li>BigChange setup or API configuration</li>
+            <li>Channel setup across WhatsApp, phone and email</li>
+            <li>Concierge Receptionist setup where applicable</li>
+          </ul>
+        </div>
+        <!-- Box 4: Training and Resources -->
+        <div class="p-6 bg-white rounded-xl shadow-xl border-b-8 border-bc-primary-blue transition duration-300 hover:shadow-2xl">
+          <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Training &amp; Resources</h3>
+          <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+            <li>Live training sessions with our team</li>
+            <li>Printable quick start guides</li>
+            <li>Full access to the knowledge base</li>
+            <li>Training recordings for your team</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section>
+      <h2 class="text-4xl font-extrabold text-bc-dark-blue mb-8 text-center">Onboarding Process: Step-by-Step</h2>
+      <div class="relative max-w-4xl mx-auto pl-10 md:pl-16">
+        <!-- Timeline Connector Line (Custom CSS) -->
+        <div class="timeline-line"></div>
+        <!-- Timeline Item 1: Step 1 -->
+        <div class="timeline-item relative pb-12">
+          <div class="timeline-dot -left-2 md:-left-4">1</div>
+          <div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-primary-blue">
+            <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Step 1: Setup &amp; Workflow 1 Kickoff</h3>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h4 class="font-semibold text-bc-primary-blue mb-1">Customer</h4>
+                <ul class="list-disc pl-4 text-gray-700">
+                  <li>Sales to onboarding handover</li>
+                  <li>Provide details for two workflows</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-bc-dark-blue mb-1">Build Concierge</h4>
+                <ul class="list-disc pl-4 text-gray-700">
+                  <li>Introduce Support team</li>
+                  <li>Support process mapping for workflows</li>
+                  <li>Training session on building workflow one</li>
+                  <li>Daily monitoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Timeline Item 2: Step 2 -->
+        <div class="timeline-item relative pb-12">
+          <div class="timeline-dot -left-2 md:-left-4">2</div>
+          <div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-primary-blue">
+            <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Step 2: Workflow 1 Sign-Off & Workflow 2 Kickoff</h3>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h4 class="font-semibold text-bc-primary-blue mb-1">Customer</h4>
+                <ul class="list-disc pl-4 text-gray-700">
+                  <li>Test workflow one</li>
+                  <li>Sign off workflow one</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-bc-dark-blue mb-1">Build Concierge</h4>
+                <ul class="list-disc pl-4 text-gray-700">
+                  <li>Training session on workflow two</li>
+                  <li>Daily monitoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Timeline Item 3: Step 3 -->
+        <div class="timeline-item relative pb-12">
+          <div class="timeline-dot -left-2 md:-left-4">3</div>
+          <div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-primary-blue">
+            <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Step 3: Go-Live Preparations & Sign-Off</h3>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h4 class="font-semibold text-bc-primary-blue mb-1">Customer</h4>
+                <ul class="list-disc pl-4 text-gray-700">
+                  <li>Sign off workflow two</li>
+                  <li>Sign off UAT (User Acceptance Testing)</li>
+                  <li>Agree plan for future feature rollouts</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-bc-dark-blue mb-1">Build Concierge</h4>
+                <ul class="list-disc pl-4 text-gray-700">
+                  <li>Reconfirm Support options and future timeframes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Timeline Item 4: Post Go Live Support - Now using the brand accent green -->
+        <div class="timeline-item relative pb-12">
+          <div class="timeline-dot bg-bc-accent-green -left-2 md:-left-4">&#10003;</div>
+          <div class="ml-8 md:ml-12 p-6 bg-white rounded-xl shadow-md border-l-8 border-bc-accent-green">
+            <h3 class="text-xl font-bold text-bc-dark-blue mb-3">Post Go Live Support (30 Day Hypercare)</h3>
+            <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+              <li>A 30 day hypercare period with priority access</li>
+              <li>Weekly check ins</li>
+              <li>Handover to the Customer Success or Support team</li>
+              <li>A best practice call after 30 days</li>
+              <li>Access to our resource library and customer community</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre Onboarding Preparation (Responsibilities) -->
+    <section class="grid lg:grid-cols-2 gap-6">
+      <h2 class="lg:col-span-2 text-4xl font-extrabold text-bc-dark-blue mb-4">Pre Onboarding Preparation</h2>
+      <!-- Customer Responsibilities - Using a soft, neutral accent for non-primary actions -->
+      <div class="p-8 bg-white rounded-xl shadow-lg border-l-8 border-gray-400">
+        <h3 class="text-2xl font-bold text-bc-dark-blue mb-4">Customer Responsibilities</h3>
+        <ul class="space-y-3 text-base text-gray-700 list-disc pl-5">
+          <li>Provide BigChange API details</li>
+          <li>Appoint a Superuser</li>
+          <li>Confirm user accounts and domains</li>
+          <li>Sign off on site setup and access</li>
+          <li>Confirm any stakeholder annual leave</li>
+        </ul>
+      </div>
+      <!-- Build Concierge Responsibilities - Using Primary Blue -->
+      <div class="p-8 bg-white rounded-xl shadow-lg border-l-8 border-bc-primary-blue">
+        <h3 class="text-2xl font-bold text-bc-dark-blue mb-4">Build Concierge Responsibilities</h3>
+        <ul class="space-y-3 text-base text-gray-700 list-disc pl-5">
+          <li>Create your account</li>
+          <li>Share login details</li>
+          <li>Book weekly progress calls</li>
+          <li>Agree communication channels</li>
+          <li>Provide product overview</li>
+          <li>Confirm Support team availability</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Key Contacts (Simple Footer) -->
+    <footer class="text-center py-6 border-t mt-12">
+      <p class="text-md text-gray-500">
+        Key Contacts: A dedicated team across Support, Product and Customer Success will work with you throughout onboarding.
+      </p>
+    </footer>
+
+  </div>
 </body>
 </html>
